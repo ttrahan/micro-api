@@ -10,4 +10,6 @@ mv /root/micro-image/node_modules .
 npm install
 
 # install awscli
+apt-get remove python-pip
+easy_install pip
 SUDO=$(which sudo) && $SUDO pip install awscli
