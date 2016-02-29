@@ -33,7 +33,6 @@ build:
     - node --version
     - mkdir -p ./shippable/testresults
     - mkdir -p ./shippable/codecoverage
-    - SUDO=$(which sudo) && $SUDO pip install awscli
   pre_ci_boot:
     image_name: $REGISTRY_ACCOUNT/$AWS_EB_APPLICATION
     image_tag: latest
