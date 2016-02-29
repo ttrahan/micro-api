@@ -9,9 +9,9 @@ env:
   global:
     - XUNIT_FILE=./shippable/testresults/result.xml
     - API_PORT=80
-    - GCP_PROJECT_NAME=Shippable-GKE # existing GCP project name
+    - GCP_PROJECT_ID=shippable-gke # existing GCP project name
     - MICROSERVICE_NAME=micro-api
-    - REGISTRY_ACCOUNT=gcr.io/$GCP_PROJECT_NAME # image registry account name, e.g. Docker Hub account
+    - REGISTRY_ACCOUNT=gcr.io/$GCP_PROJECT_ID # image registry account name, e.g. Docker Hub account
     # encrypted variable for AWS_ACCESS_KEY_ID, unique to each Shippable project
     # you must generate your own hash within Shippable project settings
     - secure: KNPdy2sc6Y/jiy9/yd7m3mWYLWRK/lkDcM2hF7A699c8WuGcXZ0DoO3Qb59HuZRGoYA6GPURwprusLySSC5rKV7wTJBSDA4GQCoUboJ7ZtRrFm5gMF8p/uQVrLCyb4GmaX28BqJzONrH936j9fFeSsTJpJhWMGjeSJaOi881tGXJb7QZNDkpTtWsN7yg8eU2VJklxlNGVXEZsTxXrtdY6Jw/TiSsnv6DhmB3bqw+0VAWu+smbVEtcYdPyx2S2kpmqisTHcvJBck98d7lt0ay9MNhNCtV7AAJkRwc64dYs44G2Tcy+Lk+baCvm0uJSEmZ5nXk1f7bjb3xRbiPObgm9A==
