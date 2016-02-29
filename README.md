@@ -2,9 +2,10 @@
 
 This is the back-end of a simple 2-tier app to demonstrate deploying [Docker]
 (www.docker.com)-based application on [AWS Elastic Beanstalk]
-(aws.amazon.com/elasticbeanstalk) through Shippable. To see the full functionality
-of the app, use the same steps to deploy the front-end of the app which is also
-on Aye0Aye called [micro-www](https://github.com/aye0aye/micro-www).
+(aws.amazon.com/elasticbeanstalk) using command line instructions in a Shippable
+CI build. To see the full functionality of the app, use the same steps to deploy
+the front-end of the app which is also on Aye0Aye called [micro-www]
+(https://github.com/aye0aye/micro-www/tree/amazon-eb-cli).
 
 When this sample repo is enabled in Shippable, the CI process performs the following:
 * Uses Docker to build the CI environment from a Dockerfile, pulling the base
