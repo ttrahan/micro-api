@@ -40,4 +40,4 @@ In the shippable.yml, change the following values based on your EB application:
 - AWS_DOCKER_CONFIG=dockerconfig.$ACCOUNT_IDENTIFIER.$AWS_EB_APPLICATION
   * No changes needed
 - secure variable 1: use the Shippable project settings page to encrypt your AWS_ACCESS_KEY_ID
-- secure variable 2: use the Shippable project settings page to encrypt your AWS_SECRET_ACCESS_KEY
+- secure variable 2: use the Shippable project settings page to encrypt your AWS_SECRET_ACCESS_KEY  
