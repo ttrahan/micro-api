@@ -18,8 +18,8 @@ env:
     - AWS_REGION=us-east-1 # AWS region to deploy into
     - REGISTRY_ACCOUNT=ttrahan # image registry account name, e.g. Docker Hub account
     - ACCOUNT_IDENTIFIER=shippable.$REGISTRY_ACCOUNT
-    - AWS_DEPLOY_JSON=Dockerrun.aws.json.$ACCOUNT_IDENTIFIER.$AWS_EB_APPLICATION
-    - AWS_DOCKER_CONFIG=dockerconfig.$ACCOUNT_IDENTIFIER.$AWS_EB_APPLICATION
+    - AWS_DEPLOY_JSON=Dockerrun.aws.json.$ACCOUNT_IDENTIFIER.$AWS_EB_ENVIRONMENT
+    - AWS_DOCKER_CONFIG=dockerconfig.$ACCOUNT_IDENTIFIER.$AWS_EB_ENVIRONMENT
     # encrypted variable for AWS_ACCESS_KEY_ID, unique to each Shippable project
     # you must generate your own hash within Shippable project settings
     - secure: BNJzeNlN0Fj/mHb1kSA0iNGLF9kFiIebUb3/Jcmt3dRn8ewl4ivL08cBw0H+q9kb6Vj79E2DmCKdE5niM+hVxHL/OnKOR8GCFGaD/7JokL7omzvthPpABFYtRfWyqIG6hIplaBRgCidTDVPahr+t3rLWAlkwrp8EFvtMAv1j6Zv6eusxinFrJ9yabeFViqsOOxZjE3a71x71Vbl2+KBEu8n9twW5FbRR/VLTWduRXAShnCqZUaIAhipbxnPf8QVyUocM0O1yLNL9yCpL5mXavQH5V5mKYNJXRBqsA4D8d/+/V2by6NUM0+APcN4jTHQrgY/MIufvVX3g6UG6C9GPyA==
