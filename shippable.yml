@@ -42,7 +42,7 @@ build:
 
 integrations:
     hub:
-      - integrationName: "GCR"
+      - integrationName: "GCR-shippable-gke"
         type: gcr
         branches:
           only:
