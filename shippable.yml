@@ -6,7 +6,7 @@ node_js:
     - 0.10.33
 
 env:
-    - XUNIT_FILE=./shippable/testresults/result.xml API_PORT=3001
+    - XUNIT_FILE=./shippable/testresults/result.xml API_PORT=80
 
 before_install:
     - node --version
