@@ -42,10 +42,10 @@ integrations:
           only:
             - amazon-ecr-ecs-beta
     notifications:
-      - integrationName: slack_notifications
+      - integrationName: slack
         type: slack
         recipients:
-          - "#beta"
+          - "#demo"
         branches:
           only:
             - amazon-ecr-ecs-beta
