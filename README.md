@@ -1,7 +1,7 @@
 # micro-api demo application
 
 This is the back-end of a simple 2-tier app to demonstrate using Google Container Registry
-(GCR) and Google Container Engine (GKE) with Shippable. To see the full functionality
+(GCR) and Google Container Engine (GKE) with Shippable.  To see the full functionality
 of the app, use the same steps to deploy the front-end of the app which is also
 on Aye0Aye called [micro-www](https://github.com/aye0aye/micro-www/tree/google-gcr-gke).
 
