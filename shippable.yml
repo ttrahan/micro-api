@@ -16,8 +16,7 @@ build:
   pre_ci:
     - docker build -t $REGISTRY_ACCOUNT/$SERVICE:latest .
     - node --version
-    - mkdir -p ./shippable/testresults
-    - mkdir -p ./shippable/codecoverage
+    - mkdir -p ./shippable/testresults ./shippable/codecoverage
   pre_ci_boot:
     image_name: $REGISTRY_ACCOUNT/$SERVICE
     image_tag: latest
