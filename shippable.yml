@@ -33,6 +33,10 @@ build:
     - docker tag -f $REGISTRY_ACCOUNT/$SERVICE:latest $REGISTRY_ACCOUNT/$SERVICE:$BRANCH.$BUILD_NUMBER
     - docker push $REGISTRY_ACCOUNT/$SERVICE:$BRANCH.$BUILD_NUMBER
 
+branches:
+  only:
+    - google-gcr-gke
+
 integrations:
     hub:
       - integrationName: GCR-shippable-gke
