@@ -2,6 +2,11 @@
 
 if [ "$BRANCH" = "amazon-eb-cli-beta" ]; then
 
+  # set credentials and region to use for aws commands
+  aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+  aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+  aws configure set region $AWS_REGION
+
   # update the Elastic Beanstalk Dockerrun.aws.json deployment spec and copy files to S3
   cat Dockerrun.aws.json | sed "s/<IMAGE_NAME>/$REGISTRY_ACCOUNT\/$AWS_EB_APPLICATION\/$AWS_EB_ENVIRONMENT/" | sed "s/<TAG>/$BRANCH.$BUILD_NUMBER/" | sed "s/<DOCKER_CONFIG>/$AWS_EB_APPLICATION\/$AWS_EB_ENVIRONMENT\/$AWS_DOCKER_CONFIG.$BRANCH.$BUILD_NUMBER/" > $AWS_DEPLOY_JSON.$BRANCH.$BUILD_NUMBER
 
@@ -16,6 +21,9 @@ if [ "$BRANCH" = "amazon-eb-cli-beta" ]; then
 
   # deploy new application version to Elastic Beanstalk
   aws elasticbeanstalk update-environment --environment-name $AWS_EB_ENVIRONMENT --version-label $ACCOUNT_IDENTIFIER.$AWS_EB_ENVIRONMENT.$BRANCH.$BUILD_NUMBER --region=$AWS_REGION
+
 else
+
   echo "Not on amazon-eb-cli-beta branch - will not update Elastic Beanstalk environment"
+
 fi
