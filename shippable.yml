@@ -39,17 +39,11 @@ integrations:
       - integrationName: "Amazon ECR - ttrahan"
         type: ecr
         agent_only: false
-        branches:
-          only:
-            - master
     notifications:
       - integrationName: slack
         type: slack
         recipients:
           - "#demo"
-        branches:
-          only:
-            - master
         on_start : never
         on_success: always
         on_failure: always
