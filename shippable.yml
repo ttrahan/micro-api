@@ -41,7 +41,7 @@ integrations:
         agent_only: false
         branches:
           only:
-            - amazon-ecr-ecs-beta
+            - master
     notifications:
       - integrationName: slack
         type: slack
@@ -49,7 +49,7 @@ integrations:
           - "#demo"
         branches:
           only:
-            - amazon-ecr-ecs-beta
+            - master
         on_start : never
         on_success: always
         on_failure: always
@@ -57,7 +57,7 @@ integrations:
         type: email
         branches:
           only:
-            - amazon-ecr-ecs-beta
+            - master
         on_success: never
         on_failure: never
         on_pull_request: never
