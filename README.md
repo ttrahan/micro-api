@@ -21,7 +21,7 @@ image from public Docker Hub repository "aye0aye/micro-image"
 This microservice uses info and error messages only.
 - SHUD_LOG_TO_FILE: true or false, specifies whether to save logs to logs.log
 
-# Environment variables required for deploying to Elastic Beanstalk
+# Environment variables required for deploying to Elastic Beanstalk!
 Before beginning, create a new application and environment in Elastic Beanstalk
 using [the instructions available here](https://aws.amazon.com/elasticbeanstalk/getting-started/).
 
