@@ -1,26 +1,63 @@
 # language setting
 language: node_js
 
-# version numbers, testing against one version of node
+# version numbers, testing against two versions of node
 node_js:
-    - 0.10.33
+  - 0.10.33
 
 env:
+  global:
     - XUNIT_FILE=./shippable/testresults/result.xml API_PORT=80
+    - APPLICATION=aye0aye
+    - SERVICE=micro-api-beta
+    - REGISTRY_ACCOUNT=288971733297.dkr.ecr.us-east-1.amazonaws.com # image registry account name/location
 
-before_install:
+build:
+  pre_ci:
+    - docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:latest .
     - node --version
     - mkdir -p ./shippable/testresults
     - mkdir -p ./shippable/codecoverage
-
-script:
+  pre_ci_boot:
+    image_name: $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE
+    image_tag: latest
+    pull: false
+    options: --privileged=true
+  ci:
+    - npm install
     - grunt
-
-after_script:
+  post_ci:
     - ./node_modules/.bin/istanbul cover grunt -- -u tdd
     - ./node_modules/.bin/istanbul report cobertura --dir  ./shippable/codecoverage/
     - echo $BUILD_NUMBER > ~/buildConfig.txt
+  push:
+    - docker tag -f $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:latest $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:$BRANCH.$BUILD_NUMBER
+    - docker push $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:$BRANCH.$BUILD_NUMBER
 
-notifications:
-  irc:
-    - "Ainur.GeekShed.net#shippable"
+integrations:
+    hub:
+      - integrationName: "Amazon ECR - ttrahan"
+        type: ecr
+        agent_only: false
+        branches:
+          only:
+            - amazon-ecr-ecs-beta
+    notifications:
+      - integrationName: slack
+        type: slack
+        recipients:
+          - "#demo"
+        branches:
+          only:
+            - amazon-ecr-ecs-beta
+        on_start : never
+        on_success: always
+        on_failure: always
+      - integrationName: email
+        type: email
+        branches:
+          only:
+            - amazon-ecr-ecs-beta
+        on_success: never
+        on_failure: never
+        on_pull_request: never
