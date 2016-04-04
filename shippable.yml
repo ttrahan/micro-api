@@ -10,16 +10,16 @@ env:
     - XUNIT_FILE=./shippable/testresults/result.xml API_PORT=80
     - APPLICATION=aye0aye
     - SERVICE=micro-api-beta
-    - REGISTRY_ACCOUNT=ttrahan # image registry account name/location
+    - REGISTRY_ACCOUNT=288971733297.dkr.ecr.us-east-1.amazonaws.com # image registry account name/location
 
 build:
   pre_ci:
-    - docker build -t $REGISTRY_ACCOUNT/$SERVICE:latest .
+    - docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:latest .
     - node --version
     - mkdir -p ./shippable/testresults
     - mkdir -p ./shippable/codecoverage
   pre_ci_boot:
-    image_name: $REGISTRY_ACCOUNT/$SERVICE
+    image_name: $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE
     image_tag: latest
     pull: false
     options: --privileged=true
@@ -31,17 +31,13 @@ build:
     - ./node_modules/.bin/istanbul report cobertura --dir  ./shippable/codecoverage/
     - echo $BUILD_NUMBER > ~/buildConfig.txt
   push:
-    - docker tag -f $REGISTRY_ACCOUNT/$SERVICE:latest $REGISTRY_ACCOUNT/$SERVICE:$BRANCH.$BUILD_NUMBER
-    - docker push $REGISTRY_ACCOUNT/$SERVICE:$BRANCH.$BUILD_NUMBER
+    - docker tag -f $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:latest $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:$BRANCH.$BUILD_NUMBER
+    - docker push $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:$BRANCH.$BUILD_NUMBER
 
 integrations:
     hub:
       - integrationName: "Amazon ECR - ttrahan"
         type: ecr
-        agent_only: false
-    hub:
-      - integrationName: "Docker Hub"
-        type: docker
         agent_only: false
     notifications:
       - integrationName: slack
