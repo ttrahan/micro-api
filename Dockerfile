@@ -1,7 +1,6 @@
-FROM 288971733297.dkr.ecr.us-east-1.amazonaws.com/micro-image:flat.1
+FROM mhart/alpine-node:0.10
 
-# this folder must be created in the base images
-ADD . /root/micro-api/
+RUN apk add --no-cache bash
 
 ENV API_PORT=80 DEBUG_LEVEL=error SHUD_LOG_TO_FILE=true
 
