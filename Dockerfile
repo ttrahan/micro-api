@@ -1,5 +1,7 @@
-FROM node:6-slim
+FROM drydock/u14nod:prod
 
+# FROM mhart/alpine-node:0.10
+#
 # RUN apk update && \
 # apk add --no-cache bash \
 #   git \
