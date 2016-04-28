@@ -40,13 +40,13 @@ integrations:
         type: ecr
         agent_only: false
     notifications:
-      - integrationName: slack
-        type: slack
-        recipients:
-          - "#demo"
-        on_start : never
-        on_success: always
-        on_failure: always
+      # - integrationName: slack
+      #   type: slack
+      #   recipients:
+      #     - "#demo"
+      #   on_start : never
+      #   on_success: always
+      #   on_failure: always
       - integrationName: email
         type: email
         branches:
