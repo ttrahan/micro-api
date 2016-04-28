@@ -14,7 +14,7 @@ env:
 
 build:
   pre_ci:
-    - if [ $IS_GIT_TAG -o $IS_RELEASE ]; then echo 'this is a tag/release build'
+    - if [ $IS_GIT_TAG -o $IS_RELEASE ]; then echo $GIT_TAG_NAME $RELEASE_NAME
     - if [ $IS_RELEASE -eq 1 ]; then echo 'this is a release build'
     - docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:latest .
     - node --version
