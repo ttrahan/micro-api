@@ -1,11 +1,11 @@
-FROM mhart/alpine-node:0.10
+FROM node:6-slim
 
-RUN apk update && \
-apk add --no-cache bash \
-  git \
-  python \
-  openssh \
-  sudo
+# RUN apk update && \
+# apk add --no-cache bash \
+#   git \
+#   python \
+#   openssh \
+#   sudo
 
 # this folder must be created in the base images
 ADD . /root/micro-api/
