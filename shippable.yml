@@ -14,16 +14,7 @@ env:
 
 build:
   pre_ci:
-    - echo $IS_GIT_TAG
-    - echo $GIT_TAG_NAME
-    - echo $IS_RELEASE
-    - echo $IS_PRERELEASE
-    - echo $RELEASE_NAME
-    - echo $RELEASED_AT
-    - if [ $IS_GIT_TAG -o $IS_RELEASE ]; then echo $GIT_TAG_NAME $RELEASE_NAME; fi
-    - if [ $IS_RELEASE == true ]; then echo 'this is a release build'; fi
-    - if [ $IS_RELEASE == true ]; then echo 'this is a release build'; fi
-    - if [ $IS_RELEASE != true ]; then echo 'this is not a release build'; fi
+    - if [[ $IS_GIT_TAG == true ]]; then ./docker_build_tag.sh
     - docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:latest .
     - node --version
     - mkdir -p ./shippable/testresults
