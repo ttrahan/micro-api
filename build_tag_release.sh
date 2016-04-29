@@ -15,7 +15,7 @@ elif [[ "$GIT_TAG_NAME" == *prod* ]]; then
 fi
 
 # build images for GitHub releases
-if [["$IS_RELEASE" == true ]]; then
+if [[$IS_RELEASE == true ]]; then
   docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE/rc:$RELEASE_NAME .
   docker push $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE/rc:$RELEASE_NAME
 fi
