@@ -2,20 +2,20 @@
 
 # build beta images for GitHub tags
 if [[ "$GIT_TAG_NAME" == *beta* ]]; then
-  docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:$GIT_TAG_NAME.beta .
-  docker push $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:$GIT_TAG_NAME.beta
+  docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE/beta:$GIT_TAG_NAME .
+  docker push $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE/beta:$GIT_TAG_NAME
 
 elif [[ "$GIT_TAG_NAME" == *test* ]]; then
-  docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:$GIT_TAG_NAME.test .
-  docker push $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:$GIT_TAG_NAME.test
+  docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE/test:$GIT_TAG_NAME .
+  docker push $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE/test:$GIT_TAG_NAME
 
 elif [[ "$GIT_TAG_NAME" == *prod* ]]; then
-  docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:$GIT_TAG_NAME.prod .
-  docker push $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE/:$GIT_TAG_NAME.prod
+  docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE/prod:$GIT_TAG_NAME .
+  docker push $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE/prod:$GIT_TAG_NAME
 fi
 
 # build images for GitHub releases
 if [["$IS_RELEASE" == true ]]; then
-  docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE/$RELEASE_NAME .
-  docker push $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE/$RELEASE_NAME
+  docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE/rc:$RELEASE_NAME .
+  docker push $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE/rc:$RELEASE_NAME
 fi
