@@ -14,8 +14,8 @@ env:
 
 build:
   pre_ci:
-    - if [[ $IS_GIT_TAG == true ]] || [[ $IS_RELEASE == true ]]; then ./build_tag_release.sh; fi
-    - docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:latest .
+    - if [[ $IS_GIT_TAG == true ]] || [[ $IS_RELEASE == true ]]; then IS_COMMIT=false && ./build_tag_release.sh; fi
+    - if [[ $IS_COMMIT != false ]]; then docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:latest .
     - node --version
     - mkdir -p ./shippable/testresults
     - mkdir -p ./shippable/codecoverage
@@ -32,7 +32,7 @@ build:
     - ./node_modules/.bin/istanbul report cobertura --dir  ./shippable/codecoverage/
     - echo $BUILD_NUMBER > ~/buildConfig.txt
   push:
-    - if [[ $IS_GIT_TAG != true ]] || [[ $IS_RELEASE != true ]]; then ./build_commit.sh; fi
+    - if [[ $IS_COMMIT != false ]]; then ./push_commit.sh; fi
 
 integrations:
     hub:
