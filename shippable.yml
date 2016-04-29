@@ -32,8 +32,7 @@ build:
     - ./node_modules/.bin/istanbul report cobertura --dir  ./shippable/codecoverage/
     - echo $BUILD_NUMBER > ~/buildConfig.txt
   push:
-    - if [[ $IS_GIT_TAG != true ]]; then docker tag -f $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:latest $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:$BRANCH.$BUILD_NUMBER; fi
-    - if [[ $IS_GIT_TAG != true ]]; then docker push $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:$BRANCH.$BUILD_NUMBER; fi
+    - if [[ $IS_GIT_TAG != true ]] || [[ $IS_RELEASE != true ]]; then ./build_commit.sh; fi
 
 integrations:
     hub:
