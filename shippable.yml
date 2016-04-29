@@ -14,7 +14,7 @@ env:
 
 build:
   pre_ci:
-    - if [[ $IS_GIT_TAG == true ]]; then ./docker_build_tag.sh; fi
+    - if [[ $IS_GIT_TAG == true ]]; then ./build_tag_release.sh; fi
     - docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:latest .
     - node --version
     - mkdir -p ./shippable/testresults
