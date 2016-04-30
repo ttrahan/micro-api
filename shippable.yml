@@ -41,7 +41,8 @@ integrations:
         agent_only: false
       - integrationName: "GCR-shippable-gke"
         type: gcr
-        agent_only: false    notifications:
+        agent_only: false
+    notifications:
       # - integrationName: slack
       #   type: slack
       #   recipients:
