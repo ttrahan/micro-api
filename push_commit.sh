@@ -1,8 +1,4 @@
 #!/bin/bash -x
 
-# tag and push image for commit
-
-docker tag -f $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:latest \
-$REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:$BRANCH.$BUILD_NUMBER
-
-docker push $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:$BRANCH.$BUILD_NUMBER
+# build images for commit
+docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:latest .
