@@ -31,7 +31,6 @@ build:
     - ./node_modules/.bin/istanbul cover grunt -- -u tdd
     - ./node_modules/.bin/istanbul report cobertura --dir  ./shippable/codecoverage/
     - echo $BUILD_NUMBER > ~/buildConfig.txt
-  push:
     - if [[ $IS_COMMIT != false ]]; then ./push_commit.sh; fi
 
 integrations:
