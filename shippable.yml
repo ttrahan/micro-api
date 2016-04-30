@@ -15,7 +15,7 @@ env:
 build:
   pre_ci:
     - if [[ $IS_GIT_TAG == true ]] || [[ $IS_RELEASE == true ]]; then IS_COMMIT=false && ./build_tag_release.sh; fi
-    - if [[ $IS_COMMIT != false ]]; then docker build -t $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE:latest .
+    - if [[ $IS_COMMIT != false ]]; then ./build_commit.sh; fi
     - node --version
     - mkdir -p ./shippable/testresults
     - mkdir -p ./shippable/codecoverage
@@ -39,7 +39,9 @@ integrations:
       - integrationName: "Amazon ECR - ttrahan"
         type: ecr
         agent_only: false
-    notifications:
+      - integrationName: "GCR-shippable-gke"
+        type: gcr
+        agent_only: false    notifications:
       # - integrationName: slack
       #   type: slack
       #   recipients:

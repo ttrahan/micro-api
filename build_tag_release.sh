@@ -16,6 +16,6 @@ fi
 
 # build images for GitHub releases
 if [[ $IS_RELEASE == true ]]; then
-  docker build -t $REGISTRY_ACCOUNT/$SERVICE/rc:$RELEASE_NAME .
-  docker push $REGISTRY_ACCOUNT/$SERVICE/rc:$RELEASE_NAME
+  docker build -t gcr.io/shippable-gke/$SERVICE/rc:$RELEASE_NAME .
+  docker push gcr.io/shippable-gke/$SERVICE/rc:$RELEASE_NAME
 fi
