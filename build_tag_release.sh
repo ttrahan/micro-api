@@ -16,6 +16,6 @@ fi
 
 # build images for GitHub releases
 if [[ $IS_RELEASE == true ]]; then
-  docker build -t gcr.io/shippable-gke/$SERVICE/$RELEASE_NAME .
-  docker push gcr.io/shippable-gke/$SERVICE/$RELEASE_NAME
+  docker build -t gcr.io/shippable-gke/$SERVICE:$RELEASE_NAME .
+  docker push gcr.io/shippable-gke/$SERVICE:$RELEASE_NAME
 fi
