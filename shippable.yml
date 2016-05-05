@@ -15,7 +15,7 @@ env:
 build:
   pre_ci:
     - if [[ $IS_GIT_TAG == true ]] || [[ $IS_RELEASE == true ]]; then IS_COMMIT=false && ./build_tag_release.sh; fi
-    - if [[ $IS_COMMIT != false ]]; then ./build_commit.sh; fi
+    - ./build_commit.sh
     - node --version
     - mkdir -p ./shippable/testresults
     - mkdir -p ./shippable/codecoverage
