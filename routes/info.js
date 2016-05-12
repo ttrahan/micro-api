@@ -14,7 +14,7 @@ function info(req, res) {
       res.status(200).json({
         time: new Date(),
         buildnumber: buildnum,
-        message: 'Docker based API micro service - Deployed by Shippable!',
+        message: 'Docker based API micro service - Deployed on May 12 by Shippable!',
         body: req.body,
         query: req.query,
         params: req.params,
