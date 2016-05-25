@@ -10,7 +10,9 @@ env:
     - XUNIT_FILE=./shippable/testresults/result.xml API_PORT=80
     - APPLICATION=aye0aye
     - SERVICE=micro-api-beta
-    - REGISTRY_ACCOUNT=288971733297.dkr.ecr.us-east-1.amazonaws.com # image registry account name/location
+    - REGISTRY_ACCOUNT_1=288971733297.dkr.ecr.us-east-1.amazonaws.com # image registry account name/location
+    - REGISTRY_ACCOUNT_2=ttrahan
+    - REGISTRY_ACCOUNT_3=gcr.io/shippable-gke
 
 build:
   pre_ci:
