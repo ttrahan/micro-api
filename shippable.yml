@@ -22,7 +22,7 @@ build:
     - mkdir -p ./shippable/testresults
     - mkdir -p ./shippable/codecoverage
   pre_ci_boot:
-    image_name: $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE
+    image_name: $REGISTRY_ACCOUNT_1/$APPLICATION/$SERVICE
     image_tag: latest
     pull: false
     options: --privileged=true
