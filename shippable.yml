@@ -5,14 +5,16 @@ language: node_js
 node_js:
   - 0.10.33
 
+branches:
+  only:
+    - centos
+
 env:
   global:
     - XUNIT_FILE=./shippable/testresults/result.xml API_PORT=80
     - APPLICATION=aye0aye
     - SERVICE=micro-api-beta
-    - REGISTRY_ACCOUNT_1=288971733297.dkr.ecr.us-east-1.amazonaws.com # image registry account name/location
-    - REGISTRY_ACCOUNT_2=ttrahan
-    - REGISTRY_ACCOUNT_3=gcr.io/shippable-gke
+    - REGISTRY_ACCOUNT=ttrahan
 
 build:
   pre_ci:
@@ -22,7 +24,7 @@ build:
     - mkdir -p ./shippable/testresults
     - mkdir -p ./shippable/codecoverage
   pre_ci_boot:
-    image_name: $REGISTRY_ACCOUNT_1/$APPLICATION/$SERVICE
+    image_name: $REGISTRY_ACCOUNT/$APPLICATION/$SERVICE
     image_tag: latest
     pull: false
     options: --privileged=true
@@ -46,19 +48,3 @@ integrations:
       - integrationName: "Docker Hub"
         type: docker
         agent_only: false
-    notifications:
-      # - integrationName: slack
-      #   type: slack
-      #   recipients:
-      #     - "#demo"
-      #   on_start : never
-      #   on_success: always
-      #   on_failure: always
-      - integrationName: email
-        type: email
-        branches:
-          only:
-            - master
-        on_success: never
-        on_failure: never
-        on_pull_request: never

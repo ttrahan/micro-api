@@ -1,13 +1,11 @@
-FROM drydock/u14nod:prod
+FROM centos:7
 
-# FROM mhart/alpine-node:0.10
-#
-# RUN apk update && \
-# apk add --no-cache bash \
-#   git \
-#   python \
-#   openssh \
-#   sudo
+RUN yum update && \
+yum install --no-cache bash \
+  git \
+  python \
+  openssh \
+  sudo
 
 # this folder must be created in the base images
 ADD . /root/micro-api/
