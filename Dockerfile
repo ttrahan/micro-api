@@ -5,7 +5,11 @@ yum -y install \
   git \
   python \
   openssh \
-  sudo
+  sudo \
+  epel-release \
+  nodejs \
+  npm && \
+node --version
 
 # this folder must be created in the base images
 ADD . /root/micro-api/
