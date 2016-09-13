@@ -1,7 +1,7 @@
 FROM centos:7
 
 RUN yum update && \
-yum install \
+yum -y install \
   git \
   python \
   openssh \
