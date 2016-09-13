@@ -6,7 +6,10 @@ yum -y install \
   python \
   openssh \
   sudo \
-  epel-release \
+  epel-release
+
+RUN yum update && \
+yum -y install \
   nodejs \
   npm && \
 node --version
