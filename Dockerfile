@@ -8,8 +8,7 @@ yum -y install \
   sudo \
   epel-release
 
-RUN yum update && \
-yum -y install \
+RUN yum -y install \
   nodejs \
   npm && \
 node --version
