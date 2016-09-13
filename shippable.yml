@@ -39,12 +39,6 @@ build:
 
 integrations:
     hub:
-      - integrationName: "Amazon ECR - ttrahan"
-        type: ecr
-        agent_only: false
-      - integrationName: "GCR-shippable-gke"
-        type: gcr
-        agent_only: false
       - integrationName: "Docker Hub"
         type: docker
         agent_only: false
