@@ -2,7 +2,7 @@ FROM centos:7
 
 # required to resolve tty error on Centos
 RUN myuser=$(whoami) && \
-  echo '$myuser ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
+  echo "$myuser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
   echo "Defaults:$myuser "'!requiretty' >> /etc/sudoers && \
   cat /etc/sudoers
 
