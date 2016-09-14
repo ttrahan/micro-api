@@ -29,6 +29,7 @@ build:
     pull: false
     options: --privileged=true
   ci:
+    - npm install -g grunt
     - npm install
     - grunt
   post_ci:
