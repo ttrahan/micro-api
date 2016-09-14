@@ -13,6 +13,10 @@ RUN yum -y install \
   npm && \
 node --version
 
+RUN myuser=$(whoami) && \
+  echo '$myuser ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
+  echo "Defaults:$myuser "'!requiretty' >> /etc/sudoers
+
 # this folder must be created in the base images
 ADD . /root/micro-api/
 
